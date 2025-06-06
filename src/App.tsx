@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './components/Header'; // Add this line
 import Hero from './components/Hero';
 import Features from './components/Features';
 import ForDevelopers from './components/ForDevelopers';
@@ -9,6 +10,7 @@ import Cta from './components/Cta';
 
 const App: React.FC = () => (
   <>
+    <Header /> {/* Add this line */}
     <Hero />
     <Features />
     <ForDevelopers />
@@ -20,3 +22,4 @@ const App: React.FC = () => (
 );
 
 export default App;
+
