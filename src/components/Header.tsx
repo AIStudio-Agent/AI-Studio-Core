@@ -18,85 +18,90 @@ const Header: React.FC = () => {
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 min-h-[72px] ${
-        isScrolled ? 'backdrop-blur-sm shadow-lg py-2' : 'bg-transparent py-3'
+        isScrolled
+          ? 'backdrop-blur-sm shadow-lg py-2'  // Removed bg-gray-900/95, increased padding
+          : 'bg-transparent py-3'  // Increased padding for unscrolled state
       }`}
       style={{
-        backgroundColor: isScrolled ? 'rgba(31, 41, 55, 0.95)' : 'transparent'
+        backgroundColor: isScrolled ? 'rgba(31, 41, 55, 0.95)' : 'transparent'  // Custom dark green/teal background
       }}
     >
-      <div className="w-full px-4 md:px-8 lg:px-12">
+              <div className="w-full px-4 md:px-8">  {/* Increased horizontal padding */}
         <div className="flex items-center justify-between">
-          {/* Logo Section */}
           <div className="flex items-center">
-            <img
-              src="/iotastudiologo.png"
-              alt="iotastudio logo"
-              className="h-12 w-12 mr-4 drop-shadow-lg"
-            />
-            <div className="flex items-center">
-              <span
-                className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight"
-                style={{
-                  color: '#FFFFFF',
-                  fontFamily: '"Inter", "Roboto", sans-serif',
-                  fontWeight: '700',
-                  letterSpacing: '-0.02em'
+            <div className="flex items-center mr-12">  {/* Increased right margin */}
+              <svg
+                viewBox="0 0 24 24"
+                width="64"  // Increased from 56
+                height="64" // Increased from 56
+                stroke="currentColor"
+                strokeWidth="2"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-5"  // Increased margin
+                style={{ color: colors.primary[500] }}
+              >
+                <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                <path d="M2 17l10 5 10-5" />
+                <path d="M2 12l10 5 10-5" />
+              </svg>
+              <span 
+                className="text-5xl font-bold"  
+                style={{ 
+                  color: colors.primary[500],  // Keep consistent color
+                  fontFamily: '"Qanelas Soft", "Open Sans", sans-serif'
                 }}
               >
-                iotastudio
-              </span>
-              <span
-                className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight"
-                style={{
-                  color: '#14B8A6',
-                  fontFamily: '"Inter", "Roboto", sans-serif',
-                  fontWeight: '700',
-                  letterSpacing: '-0.02em'
-                }}
-              >
-                .ai
+                AI Studio
               </span>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+          {/* Desktop navigation */}
+          <nav className="hidden md:flex items-center space-x-16">  {/* Increased spacing */}
             <a
               href="#features"
-              className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
-              style={{ color: colors.neutral[100] }}
+              className="text-xl font-semibold hover:opacity-80 transition-opacity"
+              style={{ color: colors.neutral[100] }}  // Keep consistent white color
             >
               Features
             </a>
             <a
               href="#for-developers"
-              className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
+              className="text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
               For Developers
             </a>
             <a
               href="#for-users"
-              className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
+              className="text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
               For Users
             </a>
+            <a
+              href="#pricing"
+              className="text-xl font-semibold hover:opacity-80 transition-opacity"
+              style={{ color: colors.neutral[100] }}
+            >
+              Pricing
+            </a>
           </nav>
 
-          {/* Desktop Action Buttons */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          <div className="hidden md:flex items-center space-x-8">  {/* Increased spacing */}
             <button
-              className="flex items-center justify-center w-12 h-12 xl:w-14 xl:h-14 rounded-full hover:bg-opacity-10 hover:bg-white transition-colors"
+              className="flex items-center justify-center w-16 h-16 rounded-full hover:bg-opacity-10 hover:bg-white transition-colors"  // Increased size
               aria-label="Search"
             >
-              <Search size={24} color={colors.neutral[100]} />
+              <Search size={32} color={colors.neutral[100]} />  {/* Increased icon size */}
             </button>
             <a
               href="#login"
-              className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg transition-all border-2 hover:bg-white hover:bg-opacity-10"
-              style={{
-                color: colors.neutral[100],
+              className="px-10 py-5 text-xl font-semibold rounded-lg transition-all border-2"  // Increased padding
+              style={{ 
+                color: colors.neutral[100],  // Keep consistent white color
                 borderColor: colors.neutral[100]
               }}
             >
@@ -104,76 +109,69 @@ const Header: React.FC = () => {
             </a>
             <a
               href="#signup"
-              className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg text-white transition-all hover:opacity-90"
-              style={{ backgroundColor: '#14B8A6' }}
+              className="px-10 py-5 text-xl font-semibold rounded-lg text-white transition-all"  // Increased padding
+              style={{ backgroundColor: colors.primary[500] }}
             >
               Sign Up
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile menu button */}
           <button
-            className="lg:hidden focus:outline-none"
+            className="md:hidden focus:outline-none"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X size={28} color={colors.neutral[100]} />
+              <X size={32} color={colors.neutral[100]} />  // Changed to white
             ) : (
-              <Menu size={28} color={colors.neutral[100]} />
+              <Menu size={32} color={colors.neutral[100]} />  // Keep consistent white
             )}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       {isMobileMenuOpen && (
-        <div
-          className="lg:hidden backdrop-blur-sm shadow-lg absolute w-full top-full left-0 p-6 border-t border-gray-700"
-          style={{ backgroundColor: 'rgba(31, 41, 55, 0.95)' }}
+        <div 
+          className="md:hidden backdrop-blur-sm shadow-lg absolute w-full top-full left-0 p-10 border-t border-gray-700"  // Removed bg-gray-900/95, increased padding
+          style={{ backgroundColor: 'rgba(31, 41, 55, 0.95)' }}  // Custom dark green/teal background
         >
-          <nav className="flex flex-col space-y-4">
+          <nav className="flex flex-col space-y-6">
             <a
               href="#features"
-              className="text-lg xl:text-xl font-semibold hover:text-teal-400 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xl font-semibold text-neutral-100 hover:text-primary-500 transition-colors"
             >
               Features
             </a>
             <a
               href="#for-developers"
-              className="text-lg xl:text-xl font-semibold hover:text-teal-400 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xl font-semibold text-neutral-100 hover:text-primary-500 transition-colors"
             >
               For Developers
             </a>
             <a
               href="#for-users"
-              className="text-lg font-semibold text-neutral-100 hover:text-green-400 transition-colors py-2"
-              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-xl font-semibold text-neutral-100 hover:text-primary-500 transition-colors"
             >
               For Users
             </a>
-            <button
-              className="flex items-center justify-center w-full py-3 text-lg font-semibold text-neutral-100 hover:bg-white hover:bg-opacity-10 rounded-lg transition-colors"
-              aria-label="Search"
+            <a
+              href="#pricing"
+              className="text-xl font-semibold text-neutral-100 hover:text-primary-500 transition-colors"
             >
-              <Search size={20} className="mr-2" />
-              Search
-            </button>
-            <div className="pt-4 border-t border-gray-700 flex flex-col space-y-3">
+              Pricing
+            </a>
+            <div className="pt-6 border-t border-gray-700 flex flex-col space-y-5">
               <a
                 href="#login"
-                className="px-6 py-3 text-lg font-semibold rounded-lg border-2 border-neutral-100 text-neutral-100 text-center hover:bg-white hover:bg-opacity-10 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-8 py-4 text-xl font-semibold rounded-lg border-2 border-neutral-100 text-neutral-100 text-center"
               >
                 Log In
               </a>
               <a
                 href="#signup"
-                className="px-6 py-3 text-lg font-semibold rounded-lg text-white text-center hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: '#14B8A6' }}
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-8 py-4 text-xl font-semibold rounded-lg bg-primary-500 text-white text-center"
               >
                 Sign Up
               </a>
