@@ -53,6 +53,21 @@ export default {
           900: '#111827',
         },
       },
+      keyframes: {
+        ring: {
+          '0%, 100%': { transform: 'rotate(0deg)' },
+          '25%': { transform: 'rotate(2deg)' },
+          '75%': { transform: 'rotate(-2deg)' },
+        },
+        glow: {
+          '0%, 100%': { boxShadow: '0 0 10px #00B39F, 0 0 20px #00B39F' },
+          '50%': { boxShadow: '0 0 15px #00B39F, 0 0 30px #00B39F' },
+        },
+      },
+      animation: {
+        ring: 'ring 1.2s ease-in-out infinite',
+        glow: 'glow 2s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

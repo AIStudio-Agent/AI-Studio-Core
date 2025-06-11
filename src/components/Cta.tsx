@@ -28,18 +28,19 @@ const Cta: React.FC = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="#developer-signup" 
-              className="btn btn-primary"
+              href="#developer-signup"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-[#00B39F] rounded-lg hover:bg-[#00a38f] hover:scale-[1.03] transition-transform duration-300"
             >
               Start Building <ArrowRight size={20} className="ml-2" />
             </a>
             <a 
-              href="#user-signup" 
-              className="btn btn-secondary"
+              href="#user-signup"
+              className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border border-white/30 rounded-lg hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
             >
               Explore AI Models
             </a>
           </div>
+
           
           <p className="mt-8 text-neutral-400">
             No credit card required. Free tier available for all users.
