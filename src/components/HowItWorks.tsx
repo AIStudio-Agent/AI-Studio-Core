@@ -37,7 +37,7 @@ const HowItWorks = () => {
             How it <span className="text-teal-400">Works?</span>
           </h2>
           <p className="text-white text-center max-w-xl">
-            Search or Prompt. Either way, AI ToolKart finds the tools — so you don’t have to.
+            Search or Prompt. Either way, iotastudio.ai finds the tools — so you don’t have to.
           </p>
 
           <div className="w-full flex flex-col gap-6">
