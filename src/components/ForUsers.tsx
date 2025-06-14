@@ -76,22 +76,23 @@ const ForUsers: React.FC = () => {
                   </div>
                 ))}
               </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <a
+                    href="#browse-models"
+                    className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-[#00B39F] rounded-lg hover:bg-[#00a38f] hover:scale-[1.03]  transition-transform duration-300"
+                  >
+                    Browse AI Models
+                  </a>
+                  <a
+                    href="#how-it-works"
+                    className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border border-white/30 rounded-lg hover:bg-white/10 hover:scale-[1.03]  transition-transform duration-300"
+                  >
+                    How It Works
+                    <ArrowRight size={16} className="ml-2" />
+                  </a>
+                </div>
+
               
-              <div className="flex flex-col sm:flex-row gap-4">
-                <a 
-                  href="#browse-models" 
-                  className="btn btn-primary"
-                >
-                  Browse AI Models
-                </a>
-                <a 
-                  href="#how-it-works" 
-                  className="btn btn-secondary"
-                >
-                  How It Works
-                  <ArrowRight size={16} className="ml-2" />
-                </a>
-              </div>
             </div>
           </div>
           
