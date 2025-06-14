@@ -24,7 +24,7 @@ const ModelCard: React.FC<ModelCardProps> = ({
   color
 }) => {
   return (
-    <div className="bg-neutral-800 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow border border-neutral-700">
+    <div className="bg-neutral-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out border border-neutral-700 cursor-pointer hover:scale-105">
       <div 
         className="h-48 relative overflow-hidden"
         style={{ backgroundColor: `${color}10` }}
@@ -150,15 +150,15 @@ const ModelShowcase: React.FC = () => {
     >
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10 z-0">
-    <div
-      className="absolute inset-0"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
-        backgroundSize: '44px 44px',
-      }}
-    ></div>
-  </div>
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
+            backgroundSize: '44px 44px',
+          }}
+        ></div>
+      </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="text-center mb-12">
