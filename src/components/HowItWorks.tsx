@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+
 
 const HowItWorks = () => {
   const cards = [
     {
-      title: "01. Smart Prompter Router",
+      title: "01. Smart Prompt Router",
       description:
         "Enter your task. We’ll understand your intent and run the best tools in the right order.",
       image: "/smart-prompter-router-flow.png",
@@ -32,15 +32,16 @@ const HowItWorks = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col items-center gap-8">
-          <h2 className="text-4xl font-bold text-white">
+        <div className="flex flex-col items-center gap-3">
+          <h2 className="text-3xl md:text-4xl font-bold text-white font-['Space_Grotesk'] text-center leading-none mb-0">
             How it <span className="text-teal-400">Works?</span>
           </h2>
-          <p className="text-white text-center max-w-xl">
+          <p className="text-[1.125rem] leading-tight text-neutral-300 max-w-2xl text-center mt-0">
             Search or Prompt. Either way, iotastudio.ai finds the tools — so you don’t have to.
           </p>
+  
 
-          <div className="w-full flex flex-col gap-6">
+          <div className="w-full flex flex-col gap-6 mt-6">
             {cards.map((card, index) => (
               <motion.div
                 key={index}
