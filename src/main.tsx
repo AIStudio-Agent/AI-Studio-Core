@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import Dashboard from './pages/Dashboard';
 import RequireAuth from './components/RequireAuth';
+import BrowseModels from './pages/BrowseModels';
 
 import './index.css';
 
@@ -25,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
           <Route index element={<App />} />
           <Route path="login" element={<LoginPage />} />
           <Route path="signup" element={<SignUpPage />} />
+          <Route path="browse-models" element={<BrowseModels />} />
           <Route
             path="dashboard"
             element={

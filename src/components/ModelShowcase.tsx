@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Star, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { colors } from '../theme/colors';
 
 interface ModelCardProps {
@@ -52,13 +53,13 @@ const ModelCard: React.FC<ModelCardProps> = ({
         </div>
         <p className="text-sm text-neutral-400 mb-1">By {developer}</p>
         <p className="text-sm text-neutral-300 mb-4">{description}</p>
-        <a 
-          href={`#model-${title.toLowerCase().replace(/\s+/g, '-')}`}
-          className="text-sm font-medium flex items-center"
+        <Link 
+          to="browse-models"
+          className="text-sm font-medium flex items-center hover:opacity-80 transition-opacity"
           style={{ color }}
         >
           Learn more <ArrowRight size={14} className="ml-1" />
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -207,14 +208,14 @@ const ModelShowcase: React.FC = () => {
         
         {/* View more button */}
         <div className="text-center mt-12">
-          <a
-            href="#browse-all"
+          <Link
+            to="browse-models"
             className="inline-flex items-center px-6 py-3 rounded-lg font-medium text-neutral-900 transition-transform hover:transform hover:translate-y-[-2px]"
             style={{ backgroundColor: colors.accent[500] }}
           >
             Browse All Models
             <ArrowRight size={18} className="ml-2" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
