@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Search } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { colors } from '../theme/colors';
 
 const Header: React.FC = () => {
@@ -17,7 +18,7 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed w-full z-50 transition-all duration-300 min-h-[72px] ${
+      className={`absolute w-full z-50 transition-all duration-300 min-h-[72px] ${
         isScrolled ? 'backdrop-blur-sm shadow-lg py-2' : 'bg-transparent py-3'
       }`}
       style={{
@@ -61,27 +62,34 @@ const Header: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-            <a
-              href="#features"
+            <Link
+              to="/"
               className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
-              Features
-            </a>
-            <a
-              href="#for-developers"
+              Home
+            </Link>
+            <Link
+              to="browse-models"
+              className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
+              style={{ color: colors.neutral[100] }}
+            >
+              Browse Models
+            </Link>
+            <Link
+              to="#for-developers"
               className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
               For Developers
-            </a>
-            <a
-              href="#for-users"
+            </Link>
+            <Link
+              to="#for-users"
               className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
               For Users
-            </a>
+            </Link>
           </nav>
 
           {/* Desktop Action Buttons */}
@@ -92,8 +100,8 @@ const Header: React.FC = () => {
             >
               <Search size={24} color={colors.neutral[100]} />
             </button>
-            <a
-              href="#login"
+            <Link
+              to="/login"
               className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg transition-all border-2 hover:bg-white hover:bg-opacity-10"
               style={{
                 color: colors.neutral[100],
@@ -101,14 +109,14 @@ const Header: React.FC = () => {
               }}
             >
               Log In
-            </a>
-            <a
-              href="#signup"
+            </Link>
+            <Link
+              to="/signup"
               className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg text-white transition-all hover:opacity-90"
               style={{ backgroundColor: '#14B8A6' }}
             >
               Sign Up
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -162,21 +170,21 @@ const Header: React.FC = () => {
               Search
             </button>
             <div className="pt-4 border-t border-gray-700 flex flex-col space-y-3">
-              <a
-                href="#login"
+              <Link
+                to="/login"
                 className="px-6 py-3 text-lg font-semibold rounded-lg border-2 border-neutral-100 text-neutral-100 text-center hover:bg-white hover:bg-opacity-10 transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Log In
-              </a>
-              <a
-                href="#signup"
+              </Link>
+              <Link
+                to="/signup"
                 className="px-6 py-3 text-lg font-semibold rounded-lg text-white text-center hover:opacity-90 transition-opacity"
                 style={{ backgroundColor: '#14B8A6' }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign Up
-              </a>
+              </Link>
             </div>
           </nav>
         </div>

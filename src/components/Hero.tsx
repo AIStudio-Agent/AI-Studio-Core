@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 import { colors } from '../theme/colors';
 
 const Hero: React.FC = () => {
@@ -104,19 +105,19 @@ const Hero: React.FC = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="#get-started"
-                className="px-8 py-4 rounded-lg text-lg font-medium text-neutral-900 flex items-center justify-center transition-transform hover:transform hover:-translate-y-1"
+              <Link
+                to="browse-models"
+                className="px-8 py-4 rounded-lg text-lg font-medium text-neutral-900 flex items-center justify-center transition-transform hover:transform hover:-translate-y-1 hover:opacity-90"
                 style={{ backgroundColor: colors.accent[500] }}
               >
-                Get Started <ArrowRight size={20} className="ml-2" />
-              </a>
-              <a
-                href="#explore"
-                className="px-8 py-4 rounded-lg text-lg font-medium text-white border border-white border-opacity-30 flex items-center justify-center backdrop-blur-sm bg-white bg-opacity-10 transition-all hover:bg-opacity-20"
+                Browse AI Models <ArrowRight size={20} className="ml-2" />
+              </Link>
+              <Link
+                to="browse-models"
+                className="px-8 py-4 rounded-lg text-lg font-medium text-white border border-white border-opacity-30 flex items-center justify-center backdrop-blur-sm bg-white bg-opacity-10 transition-all hover:bg-opacity-20 hover:border-opacity-50"
               >
-                Explore AI Models
-              </a>
+                Browse All Models
+              </Link>
             </div>
           </div>
 
