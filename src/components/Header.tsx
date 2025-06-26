@@ -28,7 +28,7 @@ const Header: React.FC = () => {
       <div className="w-full px-4 md:px-8 lg:px-12">
         <div className="flex items-center justify-between">
           {/* Logo Section */}
-          <div className="flex items-center">
+          <Link to="/" className="flex items-center">
             <img
               src="/iotastudiologo.png"
               alt="iotastudio logo"
@@ -58,16 +58,15 @@ const Header: React.FC = () => {
                 .ai
               </span>
             </div>
-          </div>
-
+          </Link>
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
             <Link
-              to="/"
+              to="#features"
               className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
               style={{ color: colors.neutral[100] }}
             >
-              Home
+              Features
             </Link>
             <Link
               to="browse-models"

@@ -106,11 +106,11 @@ const Hero: React.FC = () => {
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                to="browse-models"
+                to="/login"
                 className="px-8 py-4 rounded-lg text-lg font-medium text-neutral-900 flex items-center justify-center transition-transform hover:transform hover:-translate-y-1 hover:opacity-90"
                 style={{ backgroundColor: colors.accent[500] }}
               >
-                Browse AI Models <ArrowRight size={20} className="ml-2" />
+                Get Started <ArrowRight size={20} className="ml-2" />
               </Link>
               <Link
                 to="browse-models"
