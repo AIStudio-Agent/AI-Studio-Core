@@ -208,14 +208,15 @@ const ModelShowcase: React.FC = () => {
         
         {/* View more button */}
         <div className="text-center mt-12">
-          <Link
-            to="browse-models"
-            className="inline-flex items-center px-6 py-3 rounded-lg font-medium text-neutral-900 transition-transform hover:transform hover:translate-y-[-2px]"
-            style={{ backgroundColor: colors.accent[500] }}
-          >
-            Browse All Models
-            <ArrowRight size={18} className="ml-2" />
-          </Link>
+          <div className="inline-block">
+            <Link
+              to="browse-models"
+              className="px-8 py-4 rounded-xl text-lg font-semibold text-neutral-900 dark:text-white flex items-center justify-center bg-teal-500 hover:bg-teal-600 transition-all duration-200"
+            >
+              Browse All Models
+              <ArrowRight size={20} className="ml-2" />
+            </Link>
+          </div>
         </div>
       </div>
     </section>
