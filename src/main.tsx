@@ -1,7 +1,5 @@
-import React from 'react';
-import { StrictMode } from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import PublishModel from './pages/publish';
 import {
   BrowserRouter,
   Routes,
@@ -9,19 +7,22 @@ import {
   Navigate
 } from 'react-router-dom';
 
-import Layout from './components/Layout';
 import App from './App';
+import Layout from './components/Layout';
 import LoginPage from './pages/LoginPage';
 import SignUpPage from './pages/SignUpPage';
 import Dashboard from './pages/Dashboard';
 import RequireAuth from './components/RequireAuth';
+import PublishModel from './pages/publish';
 import BrowseModels from './pages/BrowseModels';
+import ScrollToTop from './components/ScrollToTop'; // ✅ Import here
 
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      <ScrollToTop /> {/* ✅ This will auto-scroll on every route change */}
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<App />} />
@@ -36,8 +37,8 @@ createRoot(document.getElementById('root')!).render(
               </RequireAuth>
             }
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
           <Route path="/publish" element={<PublishModel />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
       <div className="absolute top-24 left-7 md:left-16 z-20">
         <div className="flex items-center">
           <span
-            className="px-3 py-1 text-xs font-medium rounded-full mr-3 animate-pulse"
+            className="px-4 py-2 text-sm md:text-base font-semibold rounded-full mr-4 animate-pulse shadow-md"
             style={{
               backgroundColor: colors.accent[500],
               color: colors.neutral[900],
@@ -67,11 +67,12 @@ const Hero: React.FC = () => {
           >
             NEW
           </span>
-          <span className="text-sm font-medium text-neutral-100">
+          <span className="text-base md:text-lg font-semibold text-neutral-100">
             Launching our beta program for AI developers
           </span>
         </div>
       </div>
+
 
       {/* Background */}
       <div className="absolute inset-0 bg-[#1E2117] z-0" />
@@ -95,7 +96,7 @@ const Hero: React.FC = () => {
           <div className="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0 pt-32 lg:pt-24">
             <h1 className="font-['Space_Grotesk'] text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white mb-6 min-h-[1.2em]">
               {prefix}
-              <span style={{ color: colors.accent[500] }}>{suffix}</span>
+              <span className="text-teal-500">{suffix}</span>
             </h1>
 
             <p className="text-xl md:text-2xl text-neutral-100 mb-8 max-w-lg opacity-90">
@@ -107,11 +108,11 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 to="/login"
-                className="px-8 py-4 rounded-lg text-lg font-medium text-neutral-900 flex items-center justify-center transition-transform hover:transform hover:-translate-y-1 hover:opacity-90"
-                style={{ backgroundColor: colors.accent[500] }}
+                className="px-6 py-3 text-lg font-semibold rounded-lg text-white bg-teal-500 hover:opacity-90 transition-all flex items-center justify-center"
               >
                 Get Started <ArrowRight size={20} className="ml-2" />
               </Link>
+
               <Link
                 to="browse-models"
                 className="px-8 py-4 rounded-lg text-lg font-medium text-white border border-white border-opacity-30 flex items-center justify-center backdrop-blur-sm bg-white bg-opacity-10 transition-all hover:bg-opacity-20 hover:border-opacity-50"
