@@ -1,6 +1,7 @@
 import React from 'react';
 import { Code, ChevronRight } from 'lucide-react';
 import { colors } from '../theme/colors';
+import { Link } from 'react-router-dom';
 
 const ForDevelopers: React.FC = () => {
   return (
@@ -112,15 +113,17 @@ const ForDevelopers: React.FC = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#publish-model"
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white bg-[#00B39F] rounded-lg hover:bg-[#00a38f] hover:scale-[1.03] transition-transform duration-300"
+                <Link
+                  to="/publish"
+                  className="px-8 py-4 rounded-xl text-lg font-semibold text-neutral-900 dark:text-white flex items-center justify-center bg-teal-500 hover:bg-teal-600 transition-all duration-200"
                 >
                   Publish Your Model
                   <ChevronRight size={18} className="ml-2" />
-                </a>
+                </Link>
                 <a
-                  href="#developer-docs"
+                  href="https://github.com/AIStudio-Agent/AI-Studio-Core/new/main?filename=README.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border border-white/30 rounded-lg hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
                 >
                   Developer Docs
