@@ -1,6 +1,7 @@
 import React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import PublishModel from './pages/publish';
 import {
   BrowserRouter,
   Routes,
@@ -36,6 +37,7 @@ createRoot(document.getElementById('root')!).render(
             }
           />
           <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/publish" element={<PublishModel />} />
         </Route>
       </Routes>
     </BrowserRouter>
