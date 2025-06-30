@@ -27,92 +27,87 @@ const Header: React.FC = () => {
       }}
     >
       <div className="w-full px-4 md:px-8 lg:px-12">
-        <div className="flex items-center justify-between">
-          {/* Logo Section */}
-          <Link to="/" className="flex items-center">
-            <img
-              src="/iotastudiologo.png"
-              alt="iotastudio logo"
-              className="h-12 w-12 mr-4 drop-shadow-lg"
-            />
-            <div className="flex items-center">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">
-                iotastudio
-              </span>
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-teal-500">
-                .ai
-              </span>
-            </div>
-          </Link>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
-            <HashLink smooth to="/#features" className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity text-white">
-              Features
-            </HashLink>
-            <HashLink
-              smooth
-              to="/#how-it-works"
-              className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity"
-              style={{ color: colors.neutral[100] }}
-            >
-              How It Works
-            </HashLink>
-
-            <HashLink smooth to="/#for-developers" className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity text-white">
-              For Developers
-            </HashLink>
-            <HashLink smooth to="/#for-users" className="text-lg xl:text-xl font-semibold hover:opacity-80 transition-opacity text-white">
-              For Users
-            </HashLink>
-          </nav>
-
-          {/* Desktop Buttons */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-            <button className="flex items-center justify-center w-12 h-12 xl:w-14 xl:h-14 rounded-full hover:bg-opacity-10 hover:bg-white transition-colors" aria-label="Search">
-              <Search size={24} color={colors.neutral[100]} />
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center">
+            {/* Menu Toggle Button */}
+            <button className="focus:outline-none mr-4" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
+              {isMobileMenuOpen ? (
+                <X size={28} color={colors.neutral[100]} />
+              ) : (
+                <Menu size={28} color={colors.neutral[100]} />
+              )}
             </button>
-            <Link to="/login" className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg transition-all border-2 hover:bg-white hover:bg-opacity-10 text-white border-white">
-              Log In
-            </Link>
-            <Link to="/signup" className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg text-white transition-all hover:opacity-90" style={{ backgroundColor: '#14B8A6' }}>
-              Sign Up
+
+            {/* Logo Section */}
+            <Link to="/" className="flex items-center">
+              <img
+                src="/iotastudiologo.png"
+                alt="iotastudio logo"
+                className="h-12 w-12 mr-4 drop-shadow-lg"
+              />
+              <div className="flex items-center">
+                <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white">
+                  iotastudio
+                </span>
+                <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-teal-500">
+                  .ai
+                </span>
+              </div>
             </Link>
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button className="lg:hidden focus:outline-none" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-label="Toggle menu">
-            {isMobileMenuOpen ? (
-              <X size={28} color={colors.neutral[100]} />
-            ) : (
-              <Menu size={28} color={colors.neutral[100]} />
-            )}
-          </button>
+          {/* Navigation Buttons */}
+          <div className="flex items-center space-x-4">
+            <button className="hidden md:flex items-center justify-center w-10 h-10 rounded-full hover:bg-white hover:bg-opacity-10 transition-colors" aria-label="Search">
+              <Search size={20} color={colors.neutral[100]} />
+            </button>
+            <Link to="/login" className="hidden md:block px-6 py-2 text-base font-semibold rounded-lg transition-all border-2 hover:bg-white hover:bg-opacity-10 text-white border-white">
+              Log In
+            </Link>
+            <Link to="/signup" className="hidden md:block px-6 py-2 text-base font-semibold rounded-lg text-white transition-all hover:opacity-90 bg-teal-500">
+              Sign Up
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden backdrop-blur-sm shadow-lg absolute w-full top-full left-0 p-6 border-t border-gray-700" style={{ backgroundColor: 'rgba(31, 41, 55, 0.95)' }}>
-          <nav className="flex flex-col space-y-4">
-            <HashLink smooth to="/#features" className="text-lg font-semibold hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
-              Features
-            </HashLink>
-            <HashLink smooth to="/#for-developers" className="text-lg font-semibold hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
-              For Developers
-            </HashLink>
-            <HashLink smooth to="/#for-users" className="text-lg font-semibold text-white hover:text-green-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
-              For Users
-            </HashLink>
-            <Link to="/login" className="px-6 py-3 text-lg font-semibold rounded-lg border-2 border-neutral-100 text-neutral-100 text-center hover:bg-white hover:bg-opacity-10 transition-colors" onClick={() => setIsMobileMenuOpen(false)}>
-              Log In
-            </Link>
-            <Link to="/signup" className="px-6 py-3 text-lg font-semibold rounded-lg text-white text-center hover:opacity-90 transition-opacity" style={{ backgroundColor: '#14B8A6' }} onClick={() => setIsMobileMenuOpen(false)}>
-              Sign Up
-            </Link>
-          </nav>
+      {/* Sidebar Navigation */}
+      <div className={`fixed inset-0 z-50 ${isMobileMenuOpen ? 'visible' : 'invisible'}`}>
+        {/* Overlay */}
+        <div 
+          className={`fixed inset-0 bg-black transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-50' : 'opacity-0'}`} 
+          onClick={() => setIsMobileMenuOpen(false)} 
+        />
+        {/* Sidebar */}
+        <div className={`fixed inset-y-0 left-0 w-64 bg-gray-900 shadow-lg transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+            <div className="flex justify-end p-4">
+              <button onClick={() => setIsMobileMenuOpen(false)} className="text-white hover:text-teal-400">
+                <X size={24} />
+              </button>
+            </div>
+            <nav className="flex flex-col p-4 space-y-6">
+              <div className="space-y-4">
+                <Link to="/browse-models" className="block text-lg font-semibold text-white hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  Home
+                </Link>
+                <HashLink smooth to="/#features" className="block text-lg font-semibold text-white hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  Features
+                </HashLink>
+                <HashLink smooth to="/#how-it-works" className="block text-lg font-semibold text-white hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  How It Works
+                </HashLink>
+                <HashLink smooth to="/#for-developers" className="block text-lg font-semibold text-white hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  For Developers
+                </HashLink>
+                <HashLink smooth to="/#for-users" className="block text-lg font-semibold text-white hover:text-teal-400 transition-colors py-2" onClick={() => setIsMobileMenuOpen(false)}>
+                  For Users
+                </HashLink>
+              </div>
+              {/* Mobile-only navigation items can be added here if needed */}
+            </nav>
+          </div>
         </div>
-      )}
+      )
     </header>
   );
 };
