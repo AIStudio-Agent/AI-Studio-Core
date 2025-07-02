@@ -47,9 +47,7 @@ const SignUpPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative px-4 pt-24 pb-16 text-white text-lg">
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#1E2117] z-0" />
+    <div className="min-h-screen relative px-4 pt-24 pb-16 text-gray-900 dark:text-white text-lg bg-white dark:bg-[#1E2117] transition-colors">
       {/* Grid Pattern */}
       <div className="absolute inset-0 opacity-10 z-0">
         <div
@@ -64,29 +62,35 @@ const SignUpPage: React.FC = () => {
 
       {/* Container */}
       <div className="relative z-10 flex items-center justify-center min-h-[80vh]">
-        <div className="w-full max-w-3xl bg-[#2A2E24]/80 backdrop-blur-sm p-12 rounded-2xl border border-neutral-800">
+        <div className="w-full max-w-3xl bg-gray-50 dark:bg-[#2A2E24]/80 backdrop-blur-sm p-12 rounded-2xl border border-gray-200 dark:border-neutral-800 transition-colors">
           {!userType ? (
             <>
-              <h2 className="text-5xl font-bold text-center mb-10">Choose Account Type</h2>
+              <h2 className="text-5xl font-bold text-center mb-10 text-teal-500 dark:text-teal-400">
+                Choose Account Type
+              </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <button
                   onClick={() => setUserType('user')}
-                  className="p-8 bg-neutral-700 rounded-xl hover:bg-neutral-600 transition-all"
+                  className="p-8 bg-white dark:bg-neutral-700 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-600 transition-all border border-gray-300 dark:border-neutral-700"
                 >
                   <h3 className="text-2xl font-semibold mb-2">User</h3>
-                  <p className="text-base text-neutral-300">Access AI models and tools</p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-300">
+                    Access AI models and tools
+                  </p>
                 </button>
                 <button
                   onClick={() => setUserType('developer')}
-                  className="p-8 bg-neutral-700 rounded-xl hover:bg-neutral-600 transition-all"
+                  className="p-8 bg-white dark:bg-neutral-700 rounded-xl hover:bg-gray-100 dark:hover:bg-neutral-600 transition-all border border-gray-300 dark:border-neutral-700"
                 >
                   <h3 className="text-2xl font-semibold mb-2">Developer</h3>
-                  <p className="text-base text-neutral-300">Create and publish AI models</p>
+                  <p className="text-base text-neutral-600 dark:text-neutral-300">
+                    Create and publish AI models
+                  </p>
                 </button>
               </div>
-              <p className="text-center text-lg font-medium text-neutral-300 mt-8">
+              <p className="text-center text-lg font-medium text-neutral-600 dark:text-neutral-300 mt-8">
                 Already have an account?{' '}
-                <Link to="/login" className="text-teal-400 hover:text-teal-300 underline">
+                <Link to="/login" className="text-teal-500 hover:text-teal-400 underline">
                   Log in
                 </Link>
               </p>
@@ -99,14 +103,14 @@ const SignUpPage: React.FC = () => {
                 </h2>
                 <button
                   onClick={() => setUserType(null)}
-                  className="text-sm text-neutral-400 hover:text-white underline"
+                  className="text-sm text-neutral-500 dark:text-neutral-400 hover:text-teal-500 underline"
                   type="button"
                 >
                   Change
                 </button>
               </div>
 
-              {error && <p className="text-red-400 text-center">{error}</p>}
+              {error && <p className="text-red-500 dark:text-red-400 text-center">{error}</p>}
 
               <div>
                 <label className="block mb-1 font-medium">Email</label>
@@ -115,7 +119,7 @@ const SignUpPage: React.FC = () => {
                   type="email"
                   required
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded bg-neutral-700 text-white"
+                  className="w-full px-4 py-3 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-white border border-gray-300 dark:border-neutral-700 transition-colors"
                 />
               </div>
               <div>
@@ -125,7 +129,7 @@ const SignUpPage: React.FC = () => {
                   type="text"
                   required
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded bg-neutral-700 text-white"
+                  className="w-full px-4 py-3 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-white border border-gray-300 dark:border-neutral-700 transition-colors"
                 />
               </div>
               <div>
@@ -135,20 +139,20 @@ const SignUpPage: React.FC = () => {
                   type="password"
                   required
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded bg-neutral-700 text-white"
+                  className="w-full px-4 py-3 rounded-lg bg-white dark:bg-neutral-700 text-gray-900 dark:text-white border border-gray-300 dark:border-neutral-700 transition-colors"
                 />
               </div>
 
-              <label className="flex items-center space-x-3 text-sm text-neutral-300">
+              <label className="flex items-start space-x-3 text-sm text-neutral-700 dark:text-neutral-300">
                 <input
                   name="agreeTos"
                   type="checkbox"
                   onChange={handleChange}
-                  className="w-5 h-5 accent-teal-500"
+                  className="w-5 h-5 accent-teal-500 mt-1"
                 />
                 <span>
                   I agree to the{' '}
-                  <a href="/terms" className="underline text-teal-400">
+                  <a href="/terms" className="underline text-teal-500 hover:text-teal-400">
                     Terms & Conditions
                   </a>
                 </span>
@@ -157,7 +161,7 @@ const SignUpPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-teal-500 hover:bg-teal-600 text-black font-semibold py-3 text-lg rounded-lg transition"
+                className="w-full bg-teal-500 hover:bg-teal-600 text-black dark:text-gray-900 font-semibold py-3 text-lg rounded-lg transition"
               >
                 {loading ? 'Creating…' : 'Create Account'}
               </button>

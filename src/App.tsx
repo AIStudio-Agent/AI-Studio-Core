@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
@@ -7,8 +8,9 @@ import ForUsers from './components/ForUsers';
 import ModelShowcase from './components/ModelShowcase';
 import Cta from './components/Cta';
 
-const Home: React.FC = () => (
-  <>
+const App: React.FC = () => (
+  <div className="bg-white text-black dark:bg-[#1E2117] dark:text-white transition-colors duration-300">
+    <Header />
     <Hero />
     <Features />
     <HowItWorks />
@@ -16,12 +18,7 @@ const Home: React.FC = () => (
     <ForUsers />
     <ModelShowcase />
     <Cta />
-  </>
-);
-
-const App: React.FC = () => (
-  <Home />
+  </div>
 );
 
 export default App;
-

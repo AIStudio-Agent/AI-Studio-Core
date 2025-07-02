@@ -5,53 +5,49 @@ import { Link } from 'react-router-dom';
 
 const ForDevelopers: React.FC = () => {
   return (
-    <section id="for-developers" className="py-20 bg-[#1E2117] relative">
-  {/* Grid pattern overlay */}
-  <div className="absolute inset-0 opacity-10">
-    <div
-      className="absolute inset-0"
-      style={{
-        backgroundImage:
-          'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
-        backgroundSize: '44px 44px',
-      }}
-    ></div>
-  </div>
-
-  <div className="container mx-auto px-4 md:px-6 relative z-10">
-    <div className="flex flex-col lg:flex-row items-center gap-12">
-      
-      {/* Left side - image */}
-      <div className="lg:w-1/2 order-2 lg:order-1">
-        <div className="relative rounded-xl overflow-hidden transition-transform duration-700 delay-150 hover:scale-[1.03]">
-          <img
-            src="image-mockup.png"
-            alt="AI Marketplace Illustration"
-            className="w-[108%] h-auto object-cover rounded-xl transition-transform duration-700 delay-150"
-          />
-
-          {/* Radial glow on hover - subtle */}
-          <div
-            className="absolute inset-0 rounded-xl pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-700 delay-150"
-            style={{
-              background: 'radial-gradient(circle, rgba(0,179,159,0.08) 0%, transparent 70%)',
-              zIndex: 1,
-            }}
-          />
-
-          {/* Decorative gradients */}
-          <div className="absolute -z-10 w-full h-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-10 transform translate-x-4 translate-y-4 rounded-xl"></div>
-          <div
-            className="absolute -top-4 -right-4 w-20 h-20 rounded-full"
-            style={{
-              background: `linear-gradient(135deg, ${colors.primary[500]}, ${colors.secondary[500]})`,
-              opacity: 0.7,
-              zIndex: -1,
-            }}
-          ></div>
-        </div>
+    <section id="for-developers" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
+            backgroundSize: '44px 44px',
+          }}
+        />
       </div>
 
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Left side - image */}
+          <div className="lg:w-1/2 order-2 lg:order-1">
+            <div className="relative rounded-xl overflow-hidden transition-transform duration-700 delay-150 hover:scale-[1.03]">
+              <img
+                src="image-mockup.png"
+                alt="AI Marketplace Illustration"
+                className="w-[108%] h-auto object-cover rounded-xl transition-transform duration-700 delay-150"
+              />
+
+              <div
+                className="absolute inset-0 rounded-xl pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-700 delay-150"
+                style={{
+                  background: 'radial-gradient(circle, rgba(0,179,159,0.08) 0%, transparent 70%)',
+                  zIndex: 1,
+                }}
+              />
+
+              <div className="absolute -z-10 w-full h-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-10 transform translate-x-4 translate-y-4 rounded-xl"></div>
+              <div
+                className="absolute -top-4 -right-4 w-20 h-20 rounded-full"
+                style={{
+                  background: `linear-gradient(135deg, ${colors.primary[500]}, ${colors.secondary[500]})`,
+                  opacity: 0.7,
+                  zIndex: -1,
+                }}
+              />
+            </div>
+          </div>
 
           {/* Right side - content */}
           <div className="lg:w-1/2 order-1 lg:order-2">
@@ -66,10 +62,10 @@ const ForDevelopers: React.FC = () => {
                 <Code size={16} className="mr-2" />
                 For Developers
               </div>
-              <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-6 text-white">
+              <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
                 Build and Monetize Your AI Innovations
               </h2>
-              <p className="text-lg text-neutral-300 mb-8">
+              <p className="text-lg text-neutral-700 dark:text-neutral-300 mb-8">
                 iotastudio.ai provides everything developers need to create, deploy,
                 and monetize AI models and agents. From powerful APIs to
                 comprehensive documentation, we've got you covered.
@@ -107,7 +103,7 @@ const ForDevelopers: React.FC = () => {
                         />
                       </svg>
                     </div>
-                    <p className="text-neutral-300">{item}</p>
+                    <p className="text-neutral-700 dark:text-neutral-300">{item}</p>
                   </div>
                 ))}
               </div>
@@ -115,7 +111,10 @@ const ForDevelopers: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/publish"
-                  className="px-8 py-4 rounded-xl text-lg font-semibold text-neutral-900 dark:text-white flex items-center justify-center bg-teal-500 hover:bg-teal-600 transition-all duration-200"
+                  className="px-8 py-4 rounded-xl text-lg font-semibold text-white flex items-center justify-center transition-all duration-200"
+                  style={{
+                    backgroundColor: colors.accent[500],
+                  }}
                 >
                   Publish Your Model
                   <ChevronRight size={18} className="ml-2" />
@@ -124,7 +123,7 @@ const ForDevelopers: React.FC = () => {
                   href="https://github.com/AIStudio-Agent/AI-Studio-Core/new/main?filename=README.md"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border border-white/30 rounded-lg hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/30 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
                 >
                   Developer Docs
                   <ChevronRight size={16} className="ml-1" />

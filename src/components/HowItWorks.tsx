@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 
-
 const HowItWorks = () => {
   const cards = [
     {
@@ -18,9 +17,9 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-[#1E2117] relative">
+    <section id="how-it-works" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
       {/* Grid background */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
@@ -33,13 +32,12 @@ const HowItWorks = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col items-center gap-3">
-          <h2 className="text-3xl md:text-4xl font-bold text-white font-['Space_Grotesk'] text-center leading-none mb-0">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white font-['Space_Grotesk'] text-center leading-none mb-0">
             How it <span className="text-teal-400">Works?</span>
           </h2>
-          <p className="text-[1.125rem] leading-tight text-neutral-300 max-w-2xl text-center mt-0">
+          <p className="text-[1.125rem] leading-tight text-neutral-700 dark:text-neutral-300 max-w-2xl text-center mt-0">
             Search or Prompt. Either way, iotastudio.ai finds the tools — so you don’t have to.
           </p>
-  
 
           <div className="w-full flex flex-col gap-6 mt-6">
             {cards.map((card, index) => (
@@ -67,14 +65,14 @@ const HowItWorks = () => {
                     },
                   }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="relative rounded-xl bg-neutral-800 border border-neutral-700 p-6 md:p-8 flex flex-col md:flex-row gap-6 overflow-hidden"
+                  className="relative rounded-xl bg-[#F3F4F6] dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 p-6 md:p-8 flex flex-col md:flex-row gap-6 overflow-hidden transition-colors"
                 >
                   {/* Text */}
                   <div className="w-full md:w-1/2">
                     <h3 className="text-2xl md:text-3xl font-bold text-teal-400">
                       {card.title}
                     </h3>
-                    <p className="text-lg md:text-xl text-neutral-300 mt-2">
+                    <p className="text-lg md:text-xl text-neutral-700 dark:text-neutral-300 mt-2">
                       {card.description}
                     </p>
                   </div>

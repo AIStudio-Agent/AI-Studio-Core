@@ -31,7 +31,7 @@ const ForUsers: React.FC = () => {
   ];
 
   return (
-    <section id="for-users" className="py-20 bg-[#1E2117] relative">
+    <section id="for-users" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -55,10 +55,10 @@ const ForUsers: React.FC = () => {
                 <Search size={16} className="mr-2" />
                 For Users
               </div>
-              <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-6 text-white">
+              <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
                 Discover the Perfect AI for Your Needs
               </h2>
-              <p className="text-lg text-neutral-300 mb-8">
+              <p className="text-lg text-neutral-700 dark:text-neutral-300 mb-8">
                 Browse our extensive marketplace of AI solutions created by world-class developers. Find the right tools to enhance your workflow, boost productivity, and unlock new possibilities.
               </p>
 
@@ -79,7 +79,7 @@ const ForUsers: React.FC = () => {
                         <path d="M10 3L4.5 8.5L2 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
-                    <p className="text-neutral-300">{item}</p>
+                    <p className="text-neutral-700 dark:text-neutral-300">{item}</p>
                   </div>
                 ))}
               </div>
@@ -87,13 +87,16 @@ const ForUsers: React.FC = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   onClick={() => navigate('/browse-models')}
-                  className="px-8 py-4 rounded-xl text-lg font-semibold text-neutral-900 dark:text-white flex items-center justify-center bg-teal-500 hover:bg-teal-600 transition-all duration-200"
+                  className="px-8 py-4 rounded-xl text-lg font-semibold text-white flex items-center justify-center transition-all duration-200"
+                  style={{
+                    backgroundColor: colors.accent[500]
+                  }}
                 >
                   Explore AI Models
                 </button>
                 <a
                   href="#how-it-works"
-                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-white border border-white/30 rounded-lg hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
+                  className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold text-neutral-900 dark:text-white border border-neutral-200 dark:border-white/30 rounded-lg hover:bg-neutral-100 dark:hover:bg-white/10 hover:scale-[1.03] transition-transform duration-300"
                 >
                   How It Works
                   <ArrowRight size={16} className="ml-2" />
@@ -105,19 +108,19 @@ const ForUsers: React.FC = () => {
           {/* Visual section */}
           <div className="lg:w-1/2">
             <div className="relative">
-              <div className="bg-neutral-900 rounded-xl p-6 shadow-lg border border-neutral-800">
+              <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-6 shadow-lg border border-neutral-300 dark:border-neutral-800">
                 {/* Search bar */}
                 <div className="flex items-center mb-6">
                   <div className="relative flex-grow">
                     <input
                       type="text"
                       placeholder="Search for AI models..."
-                      className="w-full py-3 pl-10 pr-4 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                      className="w-full py-3 pl-10 pr-4 rounded-lg bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 text-neutral-900 dark:text-white placeholder-neutral-500 dark:placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
                     />
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400" size={18} />
                   </div>
                   <button
-                    className="ml-3 p-3 rounded-lg border border-neutral-700 text-neutral-300 hover:bg-neutral-800"
+                    className="ml-3 p-3 rounded-lg border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-800"
                     aria-label="Filter"
                   >
                     <Filter size={18} />
@@ -129,7 +132,10 @@ const ForUsers: React.FC = () => {
                   {["All Models", "Text Generation", "Image Creation", "Data Analysis", "Voice & Audio", "Code Assistant"].map((category, i) => (
                     <div
                       key={i}
-                      className={`px-3 py-1 rounded-full text-sm font-medium ${i === 0 ? 'text-white' : 'text-neutral-300 bg-neutral-800 hover:bg-neutral-700'} cursor-pointer transition-colors`}
+                      className={`px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-colors ${i === 0
+                        ? 'text-white'
+                        : 'text-neutral-700 dark:text-neutral-300 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700'
+                        }`}
                       style={i === 0 ? { backgroundColor: colors.primary[500] } : {}}
                     >
                       {category}
@@ -138,10 +144,10 @@ const ForUsers: React.FC = () => {
                 </div>
 
                 {/* Featured models */}
-                <h3 className="text-sm font-medium text-neutral-400 mb-3">TRENDING MODELS</h3>
+                <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mb-3">TRENDING MODELS</h3>
                 <div className="space-y-3">
                   {models.map((model, i) => (
-                    <div key={i} className="p-4 rounded-lg border border-neutral-800 hover:bg-neutral-800 transition-colors">
+                    <div key={i} className="p-4 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors">
                       <div className="flex items-start">
                         <div
                           className="w-10 h-10 rounded-lg flex items-center justify-center text-white mr-3 flex-shrink-0"
@@ -152,11 +158,11 @@ const ForUsers: React.FC = () => {
                         <div className="flex-grow">
                           <div className="flex justify-between items-start">
                             <div>
-                              <h4 className="font-medium text-white">{model.name}</h4>
-                              <p className="text-sm text-neutral-400">By {model.developer}</p>
+                              <h4 className="font-medium text-neutral-900 dark:text-white">{model.name}</h4>
+                              <p className="text-sm text-neutral-500 dark:text-neutral-400">By {model.developer}</p>
                             </div>
                             <div className="flex items-center">
-                              <span className="text-sm font-medium text-white mr-1">{model.rating}</span>
+                              <span className="text-sm font-medium text-neutral-900 dark:text-white mr-1">{model.rating}</span>
                               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFD700" stroke="#FFD700" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                               </svg>
@@ -169,8 +175,8 @@ const ForUsers: React.FC = () => {
                             >
                               {model.category}
                             </span>
-                            <button className="p-2 rounded-full hover:bg-neutral-700 transition-colors" aria-label="Install">
-                              <Download size={18} className="text-neutral-300" />
+                            <button className="p-2 rounded-full hover:bg-neutral-300 dark:hover:bg-neutral-700 transition-colors" aria-label="Install">
+                              <Download size={18} className="text-neutral-600 dark:text-neutral-300" />
                             </button>
                           </div>
                         </div>
@@ -180,7 +186,7 @@ const ForUsers: React.FC = () => {
                 </div>
 
                 <div className="mt-4 text-center">
-                  <a href="#view-all" className="text-sm font-medium inline-flex items-center text-primary-400 hover:text-primary-300">
+                  <a href="#view-all" className="text-sm font-medium inline-flex items-center text-primary-500 dark:text-primary-400 hover:underline">
                     View All Models
                     <ChevronRight size={16} className="ml-1" />
                   </a>
