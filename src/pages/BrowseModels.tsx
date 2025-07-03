@@ -1,7 +1,9 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Star, ArrowRight } from 'lucide-react';
 import { colors } from '../theme/colors';
+import { useTheme } from '../context/ThemeContext'; // Ensure you have this
 
 interface ModelCardProps {
   title: string;
@@ -22,52 +24,51 @@ const ModelCard: React.FC<ModelCardProps> = ({
   rating,
   reviewCount,
   imageUrl,
-  color
+  color,
 }) => {
   return (
-    <div className="bg-neutral-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out border border-neutral-700 cursor-pointer hover:scale-105">
-      <div 
-        className="h-48 relative overflow-hidden"
-        style={{ backgroundColor: `${color}10` }}
+  <div
+  id={`model-${title.toLowerCase().replace(/\s+/g, '-')}`}
+  className="scroll-mt-64 rounded-xl overflow-hidden shadow-md transition-all duration-300 ease-out border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800 hover:scale-105 cursor-pointer"
+>
+
+    <div className="h-48 relative overflow-hidden" style={{ backgroundColor: `${color}10` }}>
+      <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+      <div
+        className="absolute top-3 right-3 px-2 py-1 rounded-md text-xs font-medium"
+        style={{ backgroundColor: color, color: 'white' }}
       >
-        <img 
-          src={imageUrl} 
-          alt={title} 
-          className="w-full h-full object-cover"
-        />
-        <div 
-          className="absolute top-3 right-3 px-2 py-1 rounded-md text-xs font-medium"
-          style={{ backgroundColor: color, color: 'white' }}
-        >
-          {category}
-        </div>
-      </div>
-      <div className="p-5">
-        <div className="flex items-center justify-between mb-2">
-          <h3 className="font-semibold text-lg text-white">{title}</h3>
-          <div className="flex items-center">
-            <Star size={16} fill="#FFD700" stroke="#FFD700" className="mr-1" />
-            <span className="text-sm font-medium text-white">{rating}</span>
-            <span className="text-xs text-neutral-400 ml-1">({reviewCount})</span>
-          </div>
-        </div>
-        <p className="text-sm text-neutral-400 mb-1">By {developer}</p>
-        <p className="text-sm text-neutral-300 mb-4">{description}</p>
-        <a 
-          href={`#model-${title.toLowerCase().replace(/\s+/g, '-')}`}
-          className="text-sm font-medium flex items-center"
-          style={{ color }}
-        >
-          Learn more <ArrowRight size={14} className="ml-1" />
-        </a>
+        {category}
       </div>
     </div>
-  );
+    <div className="p-5">
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="font-semibold text-lg text-neutral-900 dark:text-white">{title}</h3>
+        <div className="flex items-center">
+          <Star size={16} fill="#FFD700" stroke="#FFD700" className="mr-1" />
+          <span className="text-sm font-medium text-neutral-900 dark:text-white">{rating}</span>
+          <span className="text-xs text-neutral-500 dark:text-neutral-400 ml-1">({reviewCount})</span>
+        </div>
+      </div>
+      <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-1">By {developer}</p>
+      <p className="text-sm text-neutral-700 dark:text-neutral-300 mb-4">{description}</p>
+      <a
+        href={`#model-${title.toLowerCase().replace(/\s+/g, '-')}`}
+        className="text-sm font-medium flex items-center"
+        style={{ color }}
+      >
+        Learn more <ArrowRight size={14} className="ml-1" />
+      </a>
+    </div>
+  </div>
+);
+
 };
 
 const BrowseModels: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState('All');
-  
+  const location = useLocation();
+
   const categories = [
     'All',
     'Text Generation',
@@ -77,9 +78,8 @@ const BrowseModels: React.FC = () => {
     'Code Assistant',
     'Chat Bot',
     'Translation',
-    'Video Generation'
+    'Video Generation',
   ];
-  
   const models = [
     {
       title: "TextGenius Pro",
@@ -281,37 +281,37 @@ const BrowseModels: React.FC = () => {
       imageUrl: "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       color: colors.accent[500]
     }
-  ];
+  ]; // Keep as-is
 
-  const filteredModels = activeCategory === 'All'
-    ? models
-    : models.filter(model => model.category === activeCategory);
-
-  const location = useLocation();
+  const filteredModels = activeCategory === 'All' ? models : models.filter((m) => m.category === activeCategory);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);
 
   return (
-    <div className="min-h-screen bg-neutral-900 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-neutral-900 py-16 px-4 sm:px-6 lg:px-8 transition-colors">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-white mb-8 text-center">Browse AI Models</h1>
-        
-        {/* Categories */}
+        <h1 className="text-4xl font-bold text-center mb-8 text-neutral-900 dark:text-white">Browse AI Models</h1>
+
+        {/* Category Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map(category => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeCategory === category ? 'bg-primary-500 text-white' : 'bg-neutral-800 text-neutral-400 hover:bg-neutral-700'}`}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeCategory === category
+                  ? 'bg-teal-500 text-white'
+                  : 'bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-200 dark:hover:bg-neutral-700'
+              }`}
             >
               {category}
             </button>
           ))}
         </div>
 
-        {/* Grid of Models */}
+        {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredModels.map((model, index) => (
             <ModelCard key={index} {...model} />

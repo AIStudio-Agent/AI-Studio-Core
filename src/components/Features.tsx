@@ -11,27 +11,28 @@ interface FeatureCardProps {
 
 const FeatureCard: React.FC<FeatureCardProps> = ({ icon, title, description }) => {
   return (
-   <motion.div
-  whileInView={{ opacity: 1, y: 0 }}
-  initial={{ opacity: 0, y: 50 }}
-  transition={{ duration: 0.6, ease: 'easeOut' }}
-  viewport={{ once: true, amount: 0.2 }}
-  whileHover={{
-    scale: 1.03,
-    boxShadow: `0 4px 15px ${colors.primary[500]}40`, // 40 = 25% opacity
-    transition: { type: 'spring', stiffness: 200, damping: 18 },
-  }}
-  className="bg-neutral-800 rounded-xl p-6 shadow-lg transition-all border border-neutral-700 cursor-pointer hover:backdrop-blur-md"
->
-  <div 
-    className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
-    style={{ backgroundColor: `${colors.primary[500]}20` }}
-  >
-    {icon}
-  </div>
-  <h3 className="text-lg font-semibold mb-2 text-white">{title}</h3>
-  <p className="text-neutral-300">{description}</p>
-</motion.div>
+    <motion.div
+      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: `0 4px 15px ${colors.primary[500]}40`,
+        transition: { type: 'spring', stiffness: 200, damping: 18 },
+      }}
+      className="bg-[#F3F4F6] dark:bg-neutral-800 rounded-xl p-6 shadow-lg transition-all 
+                border border-neutral-200 dark:border-neutral-700 cursor-pointer hover:backdrop-blur-md"
+    >
+      <div
+        className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+        style={{ backgroundColor: `${colors.primary[500]}20` }}
+      >
+        {icon}
+      </div>
+      <h3 className="text-lg font-semibold mb-2 text-neutral-900 dark:text-white">{title}</h3>
+      <p className="text-neutral-700 dark:text-neutral-300">{description}</p>
+    </motion.div>
 
   );
 };
@@ -71,23 +72,24 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="relative py-20 bg-[#1E2117] overflow-hidden">
+    <section id="features" className="relative py-20 bg-white dark:bg-[#1E2117] transition-colors overflow-hidden">
       {/* Background Grid */}
-      <div className="absolute inset-0 z-0 opacity-10">
-        <div 
-          className="absolute inset-0" 
-          style={{ 
-            backgroundImage: 'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
             backgroundSize: '44px 44px'
-          }} 
+          }}
         />
       </div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <motion.h2 
-            className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-4 text-white"
+          <motion.h2
+            className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-4 text-neutral-900 dark:text-white"
             initial={{ opacity: 0, y: -30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -96,7 +98,7 @@ const Features: React.FC = () => {
             Powerful Features for AI Innovation
           </motion.h2>
           <motion.p
-            className="text-lg text-neutral-300 max-w-2xl mx-auto"
+            className="text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl mx-auto"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
@@ -108,7 +110,7 @@ const Features: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <FeatureCard 
+            <FeatureCard
               key={index}
               icon={feature.icon}
               title={feature.title}

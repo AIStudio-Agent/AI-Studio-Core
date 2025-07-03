@@ -26,6 +26,7 @@ const PublishModel: React.FC = () => {
 
   const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+
   const fieldRefs = {
     name: useRef<HTMLInputElement>(null),
     type: useRef<HTMLSelectElement>(null),
@@ -151,9 +152,9 @@ const PublishModel: React.FC = () => {
   const isOtherSelected = form.type === 'Other';
 
   return (
-    <div className="min-h-screen relative px-6 pt-24 pb-12 text-white text-lg">
+    <div className="min-h-screen relative px-6 pt-24 pb-12 bg-white text-gray-900 dark:bg-[#1E2117] dark:text-white transition-colors">
       <ToastContainer position="top-center" />
-      <div className="absolute inset-0 bg-[#1E2117] z-0" />
+      <div className="absolute inset-0 bg-white dark:bg-[#1E2117] z-0" />
       <div className="absolute inset-0 opacity-10 z-0">
         <div
           className="absolute inset-0"
@@ -167,16 +168,18 @@ const PublishModel: React.FC = () => {
 
       <div className="relative z-10 max-w-3xl mx-auto">
         {!submitted && (
-          <h1 className="text-5xl font-bold mb-6 text-teal-400">Publish Your AI Model</h1>
+          <h1 className="text-5xl font-bold mb-6 text-teal-500">
+            Publish Your AI Model
+          </h1>
         )}
 
         {submitted ? (
-          <div className="bg-[#2A2E24]/80 backdrop-blur-md border border-teal-500 text-teal-300 p-10 rounded-xl space-y-6 min-h-[70vh]">
+          <div className="bg-gray-100 dark:bg-[#2A2E24]/80 backdrop-blur-md border border-teal-500 text-gray-900 dark:text-teal-300 p-10 rounded-xl space-y-6 min-h-[70vh]">
             <div className="flex items-center mb-4">
-              <CheckCircle className="w-6 h-6 mr-2 text-green-400" />
+              <CheckCircle className="w-6 h-6 mr-2 text-green-500" />
               <h2 className="text-3xl font-semibold">Model Published Successfully!</h2>
             </div>
-            <div className="bg-neutral-800 p-6 rounded-md text-lg space-y-3">
+            <div className="bg-white dark:bg-neutral-800 p-6 rounded-md text-lg space-y-3 border border-gray-200 dark:border-neutral-700">
               <p><strong>Name:</strong> {form.name}</p>
               <p><strong>Type:</strong> {form.type === 'Other' ? form.customType : form.type}</p>
               <p><strong>Description:</strong> {form.description}</p>
@@ -188,7 +191,7 @@ const PublishModel: React.FC = () => {
             </div>
             <button
               onClick={handleReset}
-              className="mt-6 w-full bg-teal-500 hover:bg-teal-600 text-black font-semibold py-4 text-lg rounded-lg transition"
+              className="mt-6 w-full bg-teal-500 hover:bg-teal-600 text-black dark:text-gray-900 font-semibold py-4 text-lg rounded-lg transition"
             >
               ➕ Publish Another Model
             </button>
@@ -196,20 +199,20 @@ const PublishModel: React.FC = () => {
         ) : (
           <form
             onSubmit={handleSubmit}
-            className="space-y-8 bg-[#2A2E24]/80 backdrop-blur-sm p-10 rounded-xl border border-neutral-800 text-lg"
+            className="space-y-8 bg-gray-50 dark:bg-[#2A2E24]/80 backdrop-blur-sm p-10 rounded-xl border border-gray-200 dark:border-neutral-800 transition-colors"
           >
-            <p className="text-sm text-neutral-400 mb-2 -mt-2">
+            <p className="text-sm text-gray-600 dark:text-neutral-400 mb-2 -mt-2">
               Fields marked with <span className="text-red-500">*</span> are required.
             </p>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Model Name <span className="text-red-500">*</span></label>
-              <input name="name" ref={fieldRefs.name} value={form.name} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg" />
+              <input name="name" ref={fieldRefs.name} value={form.name} onChange={handleChange} className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors" />
             </div>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Model Type <span className="text-red-500">*</span></label>
-              <select name="type" ref={fieldRefs.type} value={form.type} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg">
+              <select name="type" ref={fieldRefs.type} value={form.type} onChange={handleChange} className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors">
                 <option value="" disabled hidden>Select a category</option>
                 <option value="NLP">NLP</option>
                 <option value="Image Generation">Image Generation</option>
@@ -223,59 +226,48 @@ const PublishModel: React.FC = () => {
             {isOtherSelected && (
               <div>
                 <label className="block mb-2 text-2xl font-bold">Custom Category <span className="text-red-500">*</span></label>
-                <input name="customType" ref={fieldRefs.customType} value={form.customType} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg" />
+                <input name="customType" ref={fieldRefs.customType} value={form.customType} onChange={handleChange} className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors" />
               </div>
             )}
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Short Description <span className="text-red-500">*</span></label>
-              <textarea name="description" ref={fieldRefs.description} value={form.description} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg" />
+              <textarea name="description" ref={fieldRefs.description} value={form.description} onChange={handleChange} className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors" />
             </div>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Framework <span className="text-red-500">*</span></label>
-              <input name="framework" ref={fieldRefs.framework} value={form.framework} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg" />
+              <input name="framework" ref={fieldRefs.framework} value={form.framework} onChange={handleChange} className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors" />
             </div>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">License <span className="text-red-500">*</span></label>
-              <input name="license" ref={fieldRefs.license} value={form.license} onChange={handleChange} className="w-full p-4 bg-neutral-700 rounded-lg" placeholder="e.g. MIT or NA" />
+              <input name="license" ref={fieldRefs.license} value={form.license} onChange={handleChange} placeholder="e.g. MIT or NA" className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg border border-gray-300 dark:border-neutral-700 transition-colors" />
             </div>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Upload Model File or Link <span className="text-red-500">*</span></label>
-              <input name="upload" type="file" accept=".zip,.pt,.onnx,.pkl" ref={fieldRefs.upload} onChange={handleFileChange} className="w-full bg-neutral-700 rounded-lg file:bg-teal-600 file:text-white" />
-              <input name="link" value={form.link} onChange={handleChange} ref={fieldRefs.link} placeholder="Or paste GitHub/Colab link" className="w-full p-4 bg-neutral-700 rounded-lg mt-3" />
+              <input name="upload" type="file" accept=".zip,.pt,.onnx,.pkl" ref={fieldRefs.upload} onChange={handleFileChange} className="w-full bg-white dark:bg-neutral-700 rounded-lg file:bg-teal-500 file:text-white transition-colors" />
+              <input name="link" value={form.link} onChange={handleChange} ref={fieldRefs.link} placeholder="Or paste GitHub/Colab link" className="w-full p-4 bg-white dark:bg-neutral-700 rounded-lg mt-3 border border-gray-300 dark:border-neutral-700 transition-colors" />
             </div>
 
             <div>
               <label className="block mb-2 text-2xl font-bold">Thumbnail / Logo <span className="text-red-500">*</span></label>
-              <input name="thumbnail" type="file" accept="image/*" ref={fieldRefs.thumbnail} onChange={handleFileChange} className="w-full bg-neutral-700 rounded-lg file:bg-teal-600 file:text-white" />
+              <input name="thumbnail" type="file" accept="image/*" ref={fieldRefs.thumbnail} onChange={handleFileChange} className="w-full bg-white dark:bg-neutral-700 rounded-lg file:bg-teal-500 file:text-white transition-colors" />
               {thumbnailPreview && (
-                <img src={thumbnailPreview} alt="Preview" className="mt-4 w-32 h-32 object-cover rounded-lg border border-neutral-600" />
+                <img src={thumbnailPreview} alt="Preview" className="mt-4 w-32 h-32 object-cover rounded-lg border border-gray-300 dark:border-neutral-600 transition-colors" />
               )}
             </div>
 
             <div className="flex items-start space-x-3">
-              <input
-                id="agree"
-                name="agree"
-                type="checkbox"
-                ref={fieldRefs.agree}
-                checked={form.agree}
-                onChange={handleChange}
-                className="w-5 h-5 mt-1 accent-teal-500"
-              />
-              <label htmlFor="agree" className="text-sm text-neutral-300 leading-tight">
+              <input id="agree" name="agree" type="checkbox" ref={fieldRefs.agree} checked={form.agree} onChange={handleChange} className="w-5 h-5 mt-1 accent-teal-500" />
+              <label htmlFor="agree" className="text-sm text-gray-700 dark:text-neutral-300 leading-tight">
                 <span className="text-red-500 mr-1">*</span>
-                I agree to the <a href="#terms" className="underline text-teal-400">Terms and Conditions</a>
+                I agree to the <a href="#terms" className="underline text-teal-500">Terms and Conditions</a>
               </label>
             </div>
 
-            <button
-              type="submit"
-              className="w-full bg-teal-500 hover:bg-teal-600 text-black font-semibold py-4 text-lg rounded-lg transition"
-            >
+            <button type="submit" className="w-full bg-teal-500 hover:bg-teal-600 text-black dark:text-gray-900 font-semibold py-4 text-lg rounded-lg transition">
               🚀 Publish Model
             </button>
           </form>
