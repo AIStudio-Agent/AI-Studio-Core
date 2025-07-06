@@ -5,7 +5,10 @@ import { Link } from 'react-router-dom';
 
 const ForDevelopers: React.FC = () => {
   return (
-    <section id="for-developers" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
+    <section
+      id="for-developers"
+      className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors"
+    >
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div
@@ -18,7 +21,7 @@ const ForDevelopers: React.FC = () => {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left side - image */}
           <div className="lg:w-1/2 order-2 lg:order-1">
@@ -28,15 +31,14 @@ const ForDevelopers: React.FC = () => {
                 alt="AI Marketplace Illustration"
                 className="w-[108%] h-auto object-cover rounded-xl transition-transform duration-700 delay-150"
               />
-
               <div
                 className="absolute inset-0 rounded-xl pointer-events-none opacity-0 hover:opacity-100 transition-opacity duration-700 delay-150"
                 style={{
-                  background: 'radial-gradient(circle, rgba(0,179,159,0.08) 0%, transparent 70%)',
+                  background:
+                    'radial-gradient(circle, rgba(0,179,159,0.08) 0%, transparent 70%)',
                   zIndex: 1,
                 }}
               />
-
               <div className="absolute -z-10 w-full h-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-10 transform translate-x-4 translate-y-4 rounded-xl"></div>
               <div
                 className="absolute -top-4 -right-4 w-20 h-20 rounded-full"

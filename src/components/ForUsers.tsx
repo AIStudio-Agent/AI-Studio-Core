@@ -33,7 +33,7 @@ const ForUsers: React.FC = () => {
   return (
     <section id="for-users" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
       {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-10">
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
@@ -44,8 +44,9 @@ const ForUsers: React.FC = () => {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12">
+          {/* Left Content */}
           <div className="lg:w-1/2">
             <div className="lg:mr-6">
               <div
@@ -55,9 +56,11 @@ const ForUsers: React.FC = () => {
                 <Search size={16} className="mr-2" />
                 For Users
               </div>
+
               <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-6 text-neutral-900 dark:text-white">
                 Discover the Perfect AI for Your Needs
               </h2>
+
               <p className="text-lg text-neutral-700 dark:text-neutral-300 mb-8">
                 Browse our extensive marketplace of AI solutions created by world-class developers. Find the right tools to enhance your workflow, boost productivity, and unlock new possibilities.
               </p>
@@ -88,9 +91,7 @@ const ForUsers: React.FC = () => {
                 <button
                   onClick={() => navigate('/browse-models')}
                   className="px-8 py-4 rounded-xl text-lg font-semibold text-white flex items-center justify-center transition-all duration-200"
-                  style={{
-                    backgroundColor: colors.accent[500]
-                  }}
+                  style={{ backgroundColor: colors.accent[500] }}
                 >
                   Explore AI Models
                 </button>
@@ -105,12 +106,12 @@ const ForUsers: React.FC = () => {
             </div>
           </div>
 
-          {/* Visual section */}
-          <div className="lg:w-1/2">
-            <div className="relative">
-              <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-6 shadow-lg border border-neutral-300 dark:border-neutral-800">
-                {/* Search bar */}
-                <div className="flex items-center mb-6">
+          {/* Right Visual Section */}
+          <div className="lg:w-1/2 flex items-stretch">
+            <div className="relative  w-full flex flex-col h-full">
+              <div className="bg-neutral-100 dark:bg-neutral-900 rounded-xl p-6 shadow-lg border border-neutral-300 dark:border-neutral-800 flex flex-col h-full max-h-[600px] min-h-[420px]">
+                {/* Search */}
+                <div className="flex items-center mb-4">
                   <div className="relative flex-grow">
                     <input
                       type="text"
@@ -127,15 +128,16 @@ const ForUsers: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Category pills */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                {/* Categories */}
+                <div className="flex flex-wrap gap-2 mb-4">
                   {["All Models", "Text Generation", "Image Creation", "Data Analysis", "Voice & Audio", "Code Assistant"].map((category, i) => (
                     <div
                       key={i}
-                      className={`px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-colors ${i === 0
-                        ? 'text-white'
-                        : 'text-neutral-700 dark:text-neutral-300 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700'
-                        }`}
+                      className={`px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-colors ${
+                        i === 0
+                          ? 'text-white'
+                          : 'text-neutral-700 dark:text-neutral-300 bg-neutral-200 dark:bg-neutral-800 hover:bg-neutral-300 dark:hover:bg-neutral-700'
+                      }`}
                       style={i === 0 ? { backgroundColor: colors.primary[500] } : {}}
                     >
                       {category}
@@ -143,9 +145,9 @@ const ForUsers: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Featured models */}
-                <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mb-3">TRENDING MODELS</h3>
-                <div className="space-y-3">
+                {/* Featured Models */}
+                <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mb-2">TRENDING MODELS</h3>
+                <div className="space-y-3 overflow-y-auto flex-1 min-h-0">
                   {models.map((model, i) => (
                     <div key={i} className="p-4 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-800 transition-colors">
                       <div className="flex items-start">
@@ -193,10 +195,8 @@ const ForUsers: React.FC = () => {
                 </div>
               </div>
 
-              {/* Decorative elements */}
-              <div
-                className="absolute -z-10 w-full h-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-10 transform -translate-x-4 translate-y-4 rounded-xl"
-              ></div>
+              {/* Decorative background */}
+              <div className="absolute -z-10 w-full h-full bg-gradient-to-r from-primary-500 to-secondary-500 blur-2xl opacity-10 transform -translate-x-4 translate-y-4 rounded-xl" />
               <div
                 className="absolute -bottom-4 -left-4 w-20 h-20 rounded-full"
                 style={{
@@ -204,7 +204,7 @@ const ForUsers: React.FC = () => {
                   opacity: 0.7,
                   zIndex: -1
                 }}
-              ></div>
+              />
             </div>
           </div>
         </div>

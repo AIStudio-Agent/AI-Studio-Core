@@ -24,7 +24,7 @@ const Cta: React.FC = () => {
         style={{ animationDelay: '1s' }}
       />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-black dark:text-white">
             Ready to Transform Your AI Journey?
