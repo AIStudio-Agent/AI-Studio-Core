@@ -4,7 +4,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 const Footer: React.FC = () => {
   return (
     <footer className="relative bg-white dark:bg-[#1E2117] py-12 overflow-hidden">
-      <div className="relative z-10 container mx-auto px-4 md:px-6">
+      <div className="relative z-10 w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           {/* Logo and description */}
           <div className="lg:col-span-2">
