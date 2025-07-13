@@ -1,6 +1,7 @@
 import React from 'react';
 import { X } from 'lucide-react';
 import { HashLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ interface SidebarProps {
 }
 
 const navLinks = [
+  { name: 'Home', href: '/browse-models' },
   { name: 'Features', href: '#features' },
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'For Developers', href: '#for-developers' },
@@ -37,14 +39,24 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           <ul>
             {navLinks.map((link) => (
               <li key={link.name}>
-                <HashLink
-                  smooth
-                  to={link.href}
-                  onClick={onClose}
-                  className="block py-3 px-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-teal-50 dark:hover:bg-gray-700 rounded-md transition-colors"
-                >
-                  {link.name}
-                </HashLink>
+                                {link.name === 'Home' ? (
+                  <Link
+                    to={link.href}
+                    onClick={onClose}
+                    className="block py-3 px-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-teal-50 dark:hover:bg-gray-700 rounded-md transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <HashLink
+                    smooth
+                    to={link.href}
+                    onClick={onClose}
+                    className="block py-3 px-4 text-lg font-semibold text-neutral-900 dark:text-neutral-100 hover:bg-teal-50 dark:hover:bg-gray-700 rounded-md transition-colors"
+                  >
+                    {link.name}
+                  </HashLink>
+                )}
               </li>
             ))}
           </ul>

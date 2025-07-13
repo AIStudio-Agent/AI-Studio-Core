@@ -23,20 +23,18 @@ function ThemedApp() {
   const { theme } = useTheme();
 
   return (
-    <div className={theme}> 
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<App />} />
-            <Route path="login" element={<LoginPage />} />
-            <Route path="signup" element={<SignUpPage />} />
-            <Route path="get-started" element={<LoginPage />} />
-            <Route path="publish" element={<PublishModel />} />
-            <Route path="browse-models" element={<BrowseModels />} /> {/* ✅ ADD THIS */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className={theme}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<App />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="signup" element={<SignUpPage />} />
+          <Route path="get-started" element={<LoginPage />} />
+          <Route path="publish" element={<PublishModel />} />
+          <Route path="browse-models" element={<BrowseModels />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
     </div>
   );
 }
@@ -44,7 +42,9 @@ function ThemedApp() {
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider>
-      <ThemedApp />
+      <BrowserRouter>
+        <ThemedApp />
+      </BrowserRouter>
     </ThemeProvider>
   </StrictMode>
 );
