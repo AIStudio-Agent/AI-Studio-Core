@@ -17,25 +17,29 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-white dark:bg-[#1E2117] relative transition-colors">
+    <section
+      id="how-it-works"
+      className="py-20 w-full bg-white dark:bg-[#1E2117] relative transition-colors"
+    >
       {/* Grid background */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div
           className="absolute inset-0"
           style={{
             backgroundImage:
-              'linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)',
-            backgroundSize: '44px 44px',
+              "linear-gradient(to right, #00B39F 1px, transparent 1px), linear-gradient(to bottom, #00B39F 1px, transparent 1px)",
+            backgroundSize: "44px 44px",
           }}
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      {/* Main Content */}
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <div className="flex flex-col items-center gap-3">
           <h2 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-white font-['Space_Grotesk'] text-center leading-none mb-0">
             How it <span className="text-teal-400">Works?</span>
           </h2>
-          <p className="text-[1.125rem] leading-tight text-neutral-700 dark:text-neutral-300 max-w-2xl text-center mt-0">
+          <p className="text-[1.125rem] leading-tight text-neutral-700 dark:text-neutral-300 text-center mt-0">
             Search or Prompt. Either way, iotastudio.ai finds the tools — so you don’t have to.
           </p>
 
@@ -47,12 +51,8 @@ const HowItWorks = () => {
                 whileHover="hover"
                 animate="rest"
                 variants={{
-                  rest: {
-                    height: "auto",
-                  },
-                  hover: {
-                    height: "auto",
-                  },
+                  rest: { height: "auto" },
+                  hover: { height: "auto" },
                 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
               >
@@ -77,7 +77,7 @@ const HowItWorks = () => {
                     </p>
                   </div>
 
-                  {/* Image - absolute container to smoothly expand height */}
+                  {/* Image */}
                   <motion.div
                     className="w-full md:w-1/2 hidden md:flex justify-end items-center"
                     variants={{

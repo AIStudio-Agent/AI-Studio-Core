@@ -18,62 +18,62 @@ const Header: React.FC = () => {
   }, [isLandingPage]);
 
   const commonLinkClasses =
-    'text-lg xl:text-xl font-semibold transition-colors text-neutral-900 dark:text-neutral-100 hover:text-teal-500';
+    'text-sm md:text-base font-medium transition-colors text-neutral-900 dark:text-neutral-100 hover:text-teal-500';
 
   const iconButtonClass =
-    'flex items-center justify-center w-12 h-12 xl:w-14 xl:h-14 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors';
+    'flex items-center justify-center w-10 h-10 md:w-11 md:h-11 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors';
 
   const borderButtonClass =
-    'px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg transition-all border-2 text-center';
+    'px-4 py-2 md:px-5 md:py-2.5 text-base md:text-lg font-semibold rounded-lg transition-all border-2 text-center';
 
   return (
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'backdrop-blur-sm shadow-lg py-2 bg-white/90 dark:bg-[rgba(31,41,55,0.95)]'
-          : 'py-3 bg-white dark:bg-transparent'
+          ? 'backdrop-blur-sm shadow-md py-2 bg-[#F3F4F6] dark:bg-neutral-800'
+          : 'py-3 bg-white dark:bg-[#1E2117]'
       }`}
     >
-      <div className="container mx-auto px-4 md:px-8 lg:px-12">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img
               src="/iotastudiologo.png"
               alt="iotastudio logo"
-              className="h-12 w-12 mr-4 drop-shadow-lg object-contain"
+              className="h-10 w-10 mr-3 drop-shadow-md object-contain"
             />
-            <div className="flex items-center">
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-neutral-900 dark:text-white">
+            <div className="flex items-center leading-tight">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">
                 iotastudio
               </span>
-              <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-teal-500">
+              <span className="text-xl sm:text-2xl font-bold tracking-tight text-teal-500 ml-0.5">
                 .ai
               </span>
             </div>
           </Link>
 
-          {/* Nav */}
-          <nav className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-10">
             {['#features', '#how-it-works', '#for-developers', '#for-users'].map((href) => (
               <a key={href} href={href} className={commonLinkClasses}>
-                {href.replace('#', '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                {href.replace('#', '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
               </a>
             ))}
           </nav>
 
-          {/* Desktop Icons */}
-          <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
+          {/* Icons + Auth Buttons */}
+          <div className="hidden lg:flex items-center space-x-3 xl:space-x-5">
             <button onClick={toggleTheme} className={iconButtonClass} aria-label="Toggle theme">
               {theme === 'dark' ? (
-                <Sun size={24} className="text-neutral-900 dark:text-neutral-100" />
+                <Sun size={20} className="text-neutral-900 dark:text-neutral-100" />
               ) : (
-                <Moon size={24} className="text-neutral-900 dark:text-neutral-100" />
+                <Moon size={20} className="text-neutral-900 dark:text-neutral-100" />
               )}
             </button>
 
             <button className={iconButtonClass} aria-label="Search">
-              <Search size={24} className="text-neutral-900 dark:text-neutral-100" />
+              <Search size={20} className="text-neutral-900 dark:text-neutral-100" />
             </button>
 
             <Link
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
 
             <Link
               to="/signup"
-              className="px-6 py-3 xl:px-8 xl:py-4 text-lg xl:text-xl font-semibold rounded-lg text-white bg-teal-500 hover:bg-teal-600 transition-colors"
+              className="px-4 py-2 md:px-5 md:py-2.5 text-base md:text-lg font-semibold rounded-lg text-white bg-teal-500 hover:bg-teal-600 transition-colors"
             >
               Sign Up
             </Link>
@@ -98,9 +98,9 @@ const Header: React.FC = () => {
             aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
-              <X size={28} className="text-neutral-900 dark:text-neutral-100" />
+              <X size={26} className="text-neutral-900 dark:text-neutral-100" />
             ) : (
-              <Menu size={28} className="text-neutral-900 dark:text-neutral-100" />
+              <Menu size={26} className="text-neutral-900 dark:text-neutral-100" />
             )}
           </button>
         </div>
@@ -109,16 +109,16 @@ const Header: React.FC = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute w-full left-0 top-full bg-white dark:bg-[#1E2117] border-t border-neutral-300 dark:border-neutral-800 backdrop-blur-sm transition-colors">
-          <div className="container mx-auto px-6 py-4">
+          <div className="px-6 py-4">
             <nav className="flex flex-col space-y-4">
-              {['#features', '#for-developers', '#for-users'].map((href) => (
+              {['#features', '#how-it-works', '#for-developers', '#for-users'].map((href) => (
                 <a
                   key={href}
                   href={href}
                   className={`${commonLinkClasses} py-2`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {href.replace('#', '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                  {href.replace('#', '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}
                 </a>
               ))}
 
@@ -132,7 +132,7 @@ const Header: React.FC = () => {
                 </Link>
                 <Link
                   to="/signup"
-                  className={`${borderButtonClass} border-neutral-900 text-neutral-900 dark:border-neutral-100 dark:text-neutral-100 hover:bg-black/10 dark:hover:bg-white/10`}
+                  className={`${borderButtonClass} bg-teal-500 text-white hover:bg-teal-600`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Sign Up
@@ -141,13 +141,13 @@ const Header: React.FC = () => {
 
               <button
                 onClick={toggleTheme}
-                className="mt-4 flex items-center justify-center w-12 h-12 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
+                className="mt-4 flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors"
                 aria-label="Toggle theme"
               >
                 {theme === 'dark' ? (
-                  <Sun size={24} className="text-neutral-900 dark:text-neutral-100" />
+                  <Sun size={20} className="text-neutral-900 dark:text-neutral-100" />
                 ) : (
-                  <Moon size={24} className="text-neutral-900 dark:text-neutral-100" />
+                  <Moon size={20} className="text-neutral-900 dark:text-neutral-100" />
                 )}
               </button>
             </nav>

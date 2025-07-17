@@ -170,7 +170,7 @@ const ModelShowcase: React.FC = () => {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="w-full px-4 sm:px-8 md:px-12 lg:px-20 xl:px-24 relative z-10">
         <div className="text-center mb-12">
           <h2 className="font-['Space_Grotesk'] text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
             Featured AI Models
